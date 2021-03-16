@@ -1,0 +1,6 @@
+{
+  "ideas": [
+    {"id": 1, "title": "My first idea", "description": "This is my very first idea"},
+    {"id": 2, "title": "My second idea", "description": "This is my second idea to date"}
+  ]
+}
