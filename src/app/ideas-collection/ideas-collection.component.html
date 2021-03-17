@@ -1,15 +1,28 @@
-<table class="table table-striped" *ngIf=" ideas$ | async as ideas">
+<form (submit)="addIdea($event)" class="form-group form-inline">
+  <input [(ngModel)]="idea" type="text" name="idea" class="form-control"/>
+  <button type="submit" class="btn btn-primary">Add Idea</button>
+</form>
+<table class="table table-striped" *ngIf="ideas">
   <thead>
     <th>#</th>
     <th>Idea</th>
-    <th>Description</th>
     <th colspan="2"></th>
   </thead>
-  <tr *ngFor="let idea of ideas ">
-    <td>{{idea.id}}</td>
-    <td>{{idea.title}}</td>
-    <td>{{idea.description}}</td>
-    <td>edit</td>
-    <td>delete</td>
+  <tr *ngFor="let idea of ideas; index as i">
+    <td>{{ idea.id }}</td>
+    <td>
+      <span *ngIf="!idea.isEdit">{{ idea.description }}</span>
+      <input
+        *ngIf="idea.isEdit"
+        [(ngModel)]="idea.description"
+        type="text"
+        name="idea"
+        (keydown.enter)="editIdea(idea.description, i)"
+        (blur)="editIdea(idea.description, i)"
+        class="form-control"
+      />
+    </td>
+    <td><span (click)="idea.isEdit = !idea.isEdit">edit</span></td>
+    <td><span (click)="deleteIdea(i)">delete</span></td>
   </tr>
 </table>

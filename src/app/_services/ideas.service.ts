@@ -15,7 +15,15 @@ export class IdeasService {
   getIdeas(): Observable<IdeasInt[]> {
     return this.http.get<IdeasInt[]>(this.baseUrl);
   }
-  getIdeaById(id: number): Observable<IdeasInt> {
-    return this.http.get<IdeasInt>(`${this.baseUrl}/${id}`);
+
+  putIdea(id: number, idea: IdeasInt): Observable<IdeasInt> {
+    return this.http.put<IdeasInt>(`${this.baseUrl}/${id}`, idea);
+  }
+  deleteIdea(id: number): Observable<IdeasInt> {
+    return this.http.delete<IdeasInt>(`${this.baseUrl}/${id}`);
+  }
+
+  postIdea(idea: IdeasInt): Observable<IdeasInt>{
+    return this.http.post<IdeasInt>(this.baseUrl, idea);
   }
 }
