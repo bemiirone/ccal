@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs';
+import { IdeasInt } from './../_models/interface';
+import { IdeasService } from './../_services/ideas.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IdeasCollectionComponent implements OnInit {
 
-  constructor() { }
+  ideas$: Observable<IdeasInt[]>;
+
+  constructor(private ideasService: IdeasService) { }
 
   ngOnInit(): void {
+    this.getIdeas();
+  }
+
+  getIdeas(): void {
+      const ideas = this.ideasService.getIdeas();
+      this.ideas$ = ideas;
   }
 
 }

@@ -1,1 +1,15 @@
-<app-idea></app-idea>
+<table class="table table-striped" *ngIf=" ideas$ | async as ideas">
+  <thead>
+    <th>#</th>
+    <th>Idea</th>
+    <th>Description</th>
+    <th colspan="2"></th>
+  </thead>
+  <tr *ngFor="let idea of ideas ">
+    <td>{{idea.id}}</td>
+    <td>{{idea.title}}</td>
+    <td>{{idea.description}}</td>
+    <td>edit</td>
+    <td>delete</td>
+  </tr>
+</table>
