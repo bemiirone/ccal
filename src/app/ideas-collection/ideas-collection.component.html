@@ -1,5 +1,5 @@
-<form (submit)="addIdea($event)" class="form-group form-inline">
-  <input [(ngModel)]="idea" type="text" name="idea" class="form-control mr-2" placeholder="New idea here"/>
+<form (submit)="addIdea()" class="form-group form-inline">
+  <input [(ngModel)]="idea" type="text" name="idea" class="form-control mr-2" placeholder="New idea here" id="idea"/>
   <button type="submit" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button>
 </form>
 <table class="table table-striped" *ngIf="ideas">

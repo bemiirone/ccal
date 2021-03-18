@@ -13,7 +13,10 @@ export class IdeasCollectionComponent implements OnInit {
   idea: string;
   ideaObj: IdeasInt;
 
-  constructor(private ideasService: IdeasService, private toastr: ToastrService) {}
+  constructor(
+    private ideasService: IdeasService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getIdeas();
@@ -22,31 +25,35 @@ export class IdeasCollectionComponent implements OnInit {
   getIdeas(): void {
     this.ideasService.getIdeas().subscribe((ideas) => {
       this.ideas = ideas;
-      this.ideas.forEach(idea => idea.isEdit = false);
+      this.ideas.forEach((idea) => (idea.isEdit = false));
     });
   }
 
-  addIdea(ev: Event): void {
-    this.ideaObj = { id: this.ideas.length + 1, description: this.idea };
-    this.ideasService.postIdea(this.ideaObj).subscribe(data => {
+  addIdea(): void {
+    if (this.idea) {
+      this.ideaObj = { id: this.ideas.length + 1, description: this.idea };
+      this.ideasService.postIdea(this.ideaObj).subscribe((data) => {
+        this.toastr.success(`Idea ${data.id} added`);
+      });
       this.ideas.push(this.ideaObj);
-      this.toastr.success(`Idea ${data.id} added`);
       this.idea = '';
-    });
+    }
   }
 
   deleteIdea(index: number): void {
     this.ideasService.deleteIdea(this.ideas[index].id).subscribe(() => {
-      this.ideas.splice(index, 1);
       this.toastr.success('Successfully Deleted');
     });
+    this.ideas.splice(index, 1);
   }
 
   editIdea(value: string, index: number): void {
-    this.ideaObj = { id: this.ideas[index].id, description: value};
+    this.ideaObj = { id: this.ideas[index].id, description: value };
     this.ideas[index].isEdit = false;
-    this.ideasService.putIdea(this.ideas[index].id, this.ideaObj).subscribe(data => {
-      this.toastr.success(`Idea ${data.id} amended`);
-    });
+    this.ideasService
+      .putIdea(this.ideas[index].id, this.ideaObj)
+      .subscribe((data) => {
+        this.toastr.success(`Idea ${data.id} amended`);
+      });
   }
 }
