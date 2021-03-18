@@ -14,7 +14,8 @@ Clone repo `https://github.com/bemiirone/ccal.git`
 
 Run `npm i`
 
+Run `npm run api` to run api server
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. 
 
-Run `npm run api` to run api server
 
