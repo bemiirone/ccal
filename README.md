@@ -7,6 +7,7 @@ This is simple ideas CRUD app:
 - Add ideas
 - Inline edit ideas
 - Delete ideas
+- Data persistance even after refresh.
 
 ## Set Up
 
