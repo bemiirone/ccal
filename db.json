@@ -2,7 +2,7 @@
   "ideas": [
     {
       "id": 1,
-      "description": "This is my second idea "
+      "description": "This is my first idea "
     },
     {
       "id": 2,
@@ -11,10 +11,6 @@
     {
       "id": 3,
       "description": "This my third idea"
-    },
-    {
-      "id": 4,
-      "description": "This my forth idea"
     }
   ]
 }

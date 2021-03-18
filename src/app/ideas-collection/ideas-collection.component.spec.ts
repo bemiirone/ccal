@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { IdeasCollectionComponent } from './ideas-collection.component';
 
 describe('IdeasCollectionComponent', () => {

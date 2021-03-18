@@ -1,14 +1,14 @@
 <form (submit)="addIdea($event)" class="form-group form-inline">
-  <input [(ngModel)]="idea" type="text" name="idea" class="form-control"/>
-  <button type="submit" class="btn btn-primary">Add Idea</button>
+  <input [(ngModel)]="idea" type="text" name="idea" class="form-control mr-2" placeholder="New idea here"/>
+  <button type="submit" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button>
 </form>
 <table class="table table-striped" *ngIf="ideas">
   <thead>
-    <th>#</th>
-    <th>Idea</th>
+    <th><i class="fas fa-hashtag" aria-hidden="true"></i></th>
+    <th>Ideas</th>
     <th colspan="2"></th>
   </thead>
-  <tr *ngFor="let idea of ideas; index as i">
+  <tr *ngFor="let idea of ideas; index as i" class="idea">
     <td>{{ idea.id }}</td>
     <td>
       <span *ngIf="!idea.isEdit">{{ idea.description }}</span>
@@ -22,7 +22,7 @@
         class="form-control"
       />
     </td>
-    <td><span (click)="idea.isEdit = !idea.isEdit">edit</span></td>
-    <td><span (click)="deleteIdea(i)">delete</span></td>
+    <td><span (click)="idea.isEdit = !idea.isEdit"><i class="fa fa-edit" aria-hidden="true"></i></span></td>
+    <td><span (click)="deleteIdea(i)"><i class="fa fa-trash" aria-hidden="true"></i></span></td>
   </tr>
 </table>
